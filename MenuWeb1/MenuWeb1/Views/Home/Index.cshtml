@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<section class="max-w-4xl">
+    <h1 class="font-headline text-4xl font-extrabold text-on-surface mb-8 leading-tight">
+        What would you like to <span class="text-primary italic">discover </span> today?
+    </h1>
+    <div class="relative group">
+        <input id="searchInput" autocomplete="off" class="w-full bg-surface-container-low border-none rounded-xl py-5 px-8 text-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-300 shadow-sm outline-none" placeholder="Search for food..." type="text" />
+        <button id="searchBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white p-3 rounded-xl hover:scale-105 transition-transform active:scale-95">
+            <span class="material-symbols-outlined">search</span>
+        </button>
+    </div>
+
+    <div class="mt-4 flex items-center gap-3">
+        <span class="text-sm font-medium text-on-surface-variant flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">location_on</span>
+            City:
+        </span>
+        <div class="flex flex-wrap gap-2" id="citySelector">
+            <button class="city-btn text-sm px-4 py-1.5 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-city="new-york">New York</button>
+            <button class="city-btn text-sm px-4 py-1.5 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-city="chicago">Chicago</button>
+            <button class="city-btn text-sm px-4 py-1.5 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-city="san-francisco">San Francisco</button>
+            <button class="city-btn text-sm px-4 py-1.5 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-city="boston">Boston</button>
+            <button class="city-btn text-sm px-4 py-1.5 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-city="austin">Austin</button>
+        </div>
+    </div>
+</section>
+
+<div id="searchResults" class="hidden mt-6 space-y-4"></div>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="lg:col-span-4 bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-outline-variant/10 flex flex-col">
+        <div class="flex items-center justify-between mb-8">
+            <h3 class="font-headline text-xl font-bold">Populer Searches</h3>
+            <span class="material-symbols-outlined text-primary">trending_up</span>
+        </div>
+        <div class="flex-1 flex flex-col justify-end gap-6 h-64">
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-medium text-on-surface-variant"><span>Chicken Sandwich</span><span>85%</span></div>
+                <div class="w-full bg-surface-container rounded-full h-2 overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 85%"></div></div>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-medium text-on-surface-variant"><span>Pizza</span><span>72%</span></div>
+                <div class="w-full bg-surface-container rounded-full h-2 overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 72%"></div></div>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-medium text-on-surface-variant"><span>Tacos</span><span>64%</span></div>
+                <div class="w-full bg-surface-container rounded-full h-2 overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 64%"></div></div>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-medium text-on-surface-variant"><span>Burgers </span><span>48%</span></div>
+                <div class="w-full bg-surface-container rounded-full h-2 overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 48%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        @* <div class="bg-primary-container/20 p-8 rounded-lg border border-primary/20 flex flex-col">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-primary text-2xl">travel_explore</span>
+            </div>
+            <h4 class="font-headline font-bold text-lg mb-2">Hybrid Search</h4>
+            <p class="text-sm text-on-surface-variant">Combines keyword matching (BM25) and semantic search to find the most relevant dishes, even when your wording doesn't exactly match the menu.</p>
+        </div> *@
+        <div class="bg-tertiary-container/10 p-8 rounded-lg border border-tertiary-container flex flex-col">
+            <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-tertiary text-2xl">smart_toy</span>
+            </div>
+            <h4 class="font-headline font-bold text-lg mb-2">AI Assistant</h4>
+            <p class="text-sm text-on-surface-variant">Ask our chatbot for recommendations. It considers your allergen preferences and suggests dishes along with the restaurant where they're available.</p>
+        </div>
+    </div>
+</div>
+
+<section class="bg-surface-container-low rounded-xl p-8 md:p-12 relative overflow-hidden">
+    <div class="relative z-10 max-w-2xl">
+        <span class="text-primary font-bold text-xs uppercase tracking-[0.2em] mb-4 block">Allergen Alerts</span>
+        <h2 class="font-headline text-3xl font-extrabold mb-6">Your Health Matters to Us</h2>
+        <p class="text-on-surface-variant mb-8 leading-relaxed">Our AI assistant prioritizes your allergen sensitivities when analyzing menus. It provides personalized warning labels tailored to your preferences.</p>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                    <span class="material-symbols-outlined text-emerald-600" data-icon="eco">eco</span>
+                </div>
+                <span class="text-sm font-semibold">Gluten-Free</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                    <span class="material-symbols-outlined text-blue-500" data-icon="water_drop">water_drop</span>
+                </div>
+                <span class="text-sm font-semibold">Dairy</span>
+            </div>
+        </div>
+    </div>
+    <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+        <span class="material-symbols-outlined text-[20rem]" data-icon="nutrition">nutrition</span>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+
+        window.selectedCity = null ;
+
+        // Şehir seçimi
+        document.querySelectorAll('.city-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.city-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white', 'border-primary');
+                    b.classList.add('border-outline-variant/30', 'text-on-surface-variant');
+                });
+                btn.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
+                btn.classList.remove('border-outline-variant/30', 'text-on-surface-variant');
+                window.selectedCity = btn.dataset.city;
+
+                if (searchInput.value.trim()) doSearch();
+            });
+        });
+
+        async function doSearch() {
+            const query = searchInput.value.trim();
+            if (!query) return;
+
+            searchResults.innerHTML = '<p class="text-on-surface-variant text-sm animate-pulse">Searching...</p>';
+            searchResults.classList.remove('hidden');
+
+            try {
+                const res = await fetch('http://localhost:5000/api/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query, method: 'hybrid', top_k: 10, city: window.selectedCity })
+                });
+                const data = await res.json();
+
+                if (data.length === 0) {
+                    searchResults.innerHTML = '<p class="text-on-surface-variant text-sm">No results found.</p>';
+                    return;
+                }
+
+                searchResults.innerHTML = `
+                    <h2 class="font-headline text-xl font-bold text-on-surface mb-4">Results for "${query}"</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${data.map(item => `
+                            <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-outline-variant/10 flex justify-between items-start hover:shadow-md transition-shadow">
+                                <div class="flex-1">
+                                    <h4 class="font-headline font-bold text-base">${item.name}</h4>
+                                    <p class="text-sm text-on-surface-variant mt-1 flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-sm">restaurant</span>
+                                        ${item.restaurant_name}
+                                    </p>
+                                    <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full mt-2 inline-block">${item.category}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+            } catch {
+                searchResults.innerHTML = '<p class="text-error text-sm">Connection error. Is Flask API running?</p>';
+            }
+        }
+
+        searchBtn.addEventListener('click', doSearch);
+        searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+    </script>
+}

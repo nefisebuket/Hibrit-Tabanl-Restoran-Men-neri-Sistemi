@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+*.npy
+*.csv
+__pycache__/
+*.pyc
+*.user

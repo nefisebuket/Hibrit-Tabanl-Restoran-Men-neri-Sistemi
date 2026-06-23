@@ -1,0 +1,66 @@
+﻿<!-- Chatbot Butonu -->
+<button id="chatToggle" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform active:scale-95">
+    <span class="material-symbols-outlined" id="chatIcon">chat</span>
+</button>
+
+<!-- Chatbot Penceresi -->
+<div id="chatWindow" class="fixed bottom-24 right-6 z-50 w-96 h-[700px] bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/20 flex flex-col overflow-hidden transition-all duration-300 opacity-0 scale-95 pointer-events-none">
+
+    <!-- Header -->
+    <div class="bg-primary px-6 py-4 flex items-center justify-between flex-shrink-0">
+        <div>
+            <h3 class="text-on-primary font-headline font-bold text-base">Menu Assistant</h3>
+            <p class="text-on-primary/70 text-xs">Lets find the best meal for you</p>
+        </div>
+        <button id="chatClose" class="text-on-primary/80 hover:text-on-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+
+    <!-- Alerjen Seçimi -->
+    <div class="bg-surface-container-low px-4 py-3 border-b border-outline-variant/10 flex-shrink-0">
+        <p class="text-xs font-semibold text-on-surface-variant mb-2">Select your allergens:</p>
+        <div class="flex flex-wrap gap-2">
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Gluten">Gluten</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Dairy">Dairy</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Egg">Egg</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Nuts">Nuts</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Fish">Fish</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Shellfish">Shellfish</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Peanut">Peanut</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Soy">Soy</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Sesame">Sesame</button>
+            <button class="allergen-btn text-xs px-3 py-1 rounded-full border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-all" data-allergen="Sulfite">Sulfite</button>
+
+        </div>
+    </div>
+
+    <!-- Mesajlar -->
+    <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 hide-scrollbar">
+        <div class="flex flex-col items-start">
+            <span class="text-xs font-semibold text-primary mb-1">Asistan</span>
+            <div class="bg-surface-container rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-on-surface max-w-[85%] shadow-sm">
+            Hello! How can I help you? What would you like to eat?           
+            </div>
+        </div>
+    </div>
+
+    <!-- Yazıyor göstergesi -->
+    <div id="typingIndicator" class="hidden px-4 pb-2">
+        <div class="bg-surface-container rounded-2xl rounded-tl-sm px-4 py-3 inline-flex gap-1 shadow-sm">
+            <span class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay:0ms"></span>
+            <span class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay:150ms"></span>
+            <span class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay:300ms"></span>
+        </div>
+    </div>
+
+    <!-- Input -->
+    <div class="px-4 py-3 border-t border-outline-variant/10 flex gap-2 flex-shrink-0 bg-surface-container-lowest">
+        <input id="chatInput" type="text" placeholder="Type a message..."
+               class="flex-1 bg-surface-container-low border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+        <button id="chatSend" class="bg-primary text-white w-10 h-10 rounded-xl flex items-center justify-center hover:scale-105 transition-transform active:scale-95 flex-shrink-0">
+            <span class="material-symbols-outlined text-sm">send</span>
+        </button>
+    </div>
+</div>
+
